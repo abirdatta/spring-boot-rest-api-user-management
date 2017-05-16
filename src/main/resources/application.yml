@@ -6,7 +6,7 @@ spring:
     password: ${DATABASE_PASSWORD}
 spring.jpa.show-sql: true
 logging: 
-  file: logs/user-service.log
+  file: /logs/user-service.log
   level: 
     com.ad.platform: DEBUG
     org.hibernate: ERROR
