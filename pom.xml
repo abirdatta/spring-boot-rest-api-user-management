@@ -4,12 +4,12 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.ad.platform</groupId>
-	<artifactId>property-management</artifactId>
+	<artifactId>user-service</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
-	<name>property-management</name>
-	<description>Property Management App</description>
+	<name>user-service</name>
+	<description>User Service in Property Management App</description>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
