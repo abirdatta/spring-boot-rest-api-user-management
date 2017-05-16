@@ -124,4 +124,11 @@ public class User {
     public void setUserType(UserType userType) {
         this.userType = userType;
     }
+
+    @Override
+    public String toString() {
+        return "User [userId=" + userId + ", firstName=" + firstName + ", middleName=" + middleName + ", lastName="
+                + lastName + ", emailId=" + emailId + ", password=" + password + ", city=" + city + ", country="
+                + country + ", userType=" + userType.toString() + "]";
+    }
 }

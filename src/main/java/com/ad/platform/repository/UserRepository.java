@@ -13,4 +13,5 @@ import com.ad.platform.model.User;
 public interface UserRepository extends CrudRepository<User, Long>{
 
     List<User> removeByFirstName(String firstName);
+    List<User> removeByEmailId(String emailId);
 }

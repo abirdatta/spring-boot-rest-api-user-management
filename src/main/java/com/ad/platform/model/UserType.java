@@ -21,10 +21,10 @@ public class UserType {
     private String type;
     private String description;
     
-    @JsonBackReference
+    /*@JsonBackReference
     @OneToMany
     @JoinColumn(name="user_type_id")
-    private Set<User> users;
+    private Set<User> users;*/
     
     public UserType(){
         
@@ -60,12 +60,16 @@ public class UserType {
         this.description = description;
     }
     
-    public Set<User> getUsers() {
+    /*public Set<User> getUsers() {
         return users;
     }
 
     public void setUsers(Set<User> users) {
         this.users = users;
+    }*/
+
+    @Override
+    public String toString() {
+        return "UserType [userTypeId=" + userTypeId + ", type=" + type + ", description=" + description + "]";
     }
-    
 }
