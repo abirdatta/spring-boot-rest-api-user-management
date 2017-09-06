@@ -1,0 +1,31 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: user-api
+  labels:
+    app: user-api
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: user-api
+  template:
+    metadata:
+      labels:
+        app: user-api
+    spec:
+      containers:
+        - image: abirdatta/user-api:v1
+          name: user-api
+          env:
+          - name: DATABASE
+            value: mysql:3306
+          - name: DATABASE_NAME
+            value: "mydb"
+          - name: DATABASE_USER
+            value: "root"
+          - name: DATABASE_PASSWORD
+            value: "password"
+          ports:
+            - containerPort: 8080
+              name: user-api
