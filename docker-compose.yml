@@ -2,12 +2,24 @@ version: "3"
 services:
     mysql:
       container_name: mysql
-      image: mysql
+      image: abirdatta/mysql:dev
       ports:
-       - "3306:3306"  
+        - 3306:3306
       environment:
-         - MYSQL_ROOT_PASSWORD=password
-         - MYSQL_DATABASE=db
+        - MYSQL_ROOT_PASSWORD=password
       volumes:
-         - ~/mysql/data/:/var/lib/mysql
-         - ~/mysql/init:/docker-entrypoint-initdb.d/:ro
+        - ~/mysql/data/:/var/lib/mysql
+    spring-boot-jpa-docker-webapp:
+      container_name: user-api
+      image: abirdatta/user-api:dev
+      depends_on:
+        - mysql
+      ports:
+        - 9000:9000
+        - 9001:9001
+      environment:
+        - DATABASE_HOST=192.168.56.102
+        - DATABASE_USER=myuser
+        - DATABASE_PASSWORD=mysql
+        - DATABASE_NAME=mydb
+        - DATABASE_PORT=3306

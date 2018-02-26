@@ -15,7 +15,7 @@ spec:
         app: mysql
     spec: 
       containers:
-        - image: abirdatta/mysql:demo
+        - image: abirdatta/mysql:dev
           name: mysql
           env:
             - name: MYSQL_ROOT_PASSWORD

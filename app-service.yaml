@@ -7,8 +7,13 @@ metadata:
 spec:
   type: LoadBalancer
   ports:
-    - port: 8080
-      targetPort: 8080
+    - name: app-api-port
+      port: 9000
+      targetPort: 9000
+      protocol: TCP
+    - name: app-management-port
+      port: 9001
+      targetPort: 9001
       protocol: TCP
   selector:
     app: user-api

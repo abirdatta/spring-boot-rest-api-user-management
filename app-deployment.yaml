@@ -5,7 +5,7 @@ metadata:
   labels:
     app: user-api
 spec:
-  replicas: 1
+  replicas: 2 
   selector:
     matchLabels:
       app: user-api
@@ -15,17 +15,19 @@ spec:
         app: user-api
     spec:
       containers:
-        - image: abirdatta/user-api:v1
+        - image: abirdatta/user-api:dev
           name: user-api
           env:
-          - name: DATABASE
-            value: mysql:3306
+          - name: DATABASE_HOST
+            value: mysql
+          - name: DATABASE_PORT
+            value: "3306"
           - name: DATABASE_NAME
             value: "mydb"
           - name: DATABASE_USER
-            value: "root"
+            value: "myuser"
           - name: DATABASE_PASSWORD
-            value: "password"
+            value: "mysql"
           ports:
             - containerPort: 8080
               name: user-api
