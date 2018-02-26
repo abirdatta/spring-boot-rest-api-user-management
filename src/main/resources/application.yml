@@ -1,12 +1,22 @@
 name: Abir
 spring: 
   datasource:
-    url: jdbc:mysql://${DATABASE}/${DATABASE_NAME}
+    url: jdbc:mysql://${DATABASE_HOST}:${DATABASE_PORT}/${DATABASE_NAME}
     username: ${DATABASE_USER}
     password: ${DATABASE_PASSWORD}
 spring.jpa.show-sql: true
 logging: 
   file: /logs/user-service.log
   level: 
-    com.ad.platform: DEBUG
-    org.hibernate: ERROR
+    com.ad.platform: INFO
+    org.hibernate: INFO
+    
+security:
+  user:
+    name: abir 
+    password: password
+
+server.port: 9000
+management.port: 9001
+management.address: 127.0.0.1    
+

@@ -5,6 +5,7 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
@@ -32,10 +33,26 @@ public class UserControllerTests {
     private UserTypeRepository userTypeRepository;
 
     @Test
+    @WithMockUser(username="abir", password="password")
     public void testUserList() throws Exception {
         given(this.userRepository.findAll()).willReturn(buildUser());
         this.mockMvc.perform(get("/user/list")).andExpect(status().isOk()).andExpect(content().json(
                 "[{\"userId\":1,\"firstName\":\"Abir\",\"middleName\":\"\",\"lastName\":\"Datta\",\"emailId\":\"a@b.com\",\"password\":\"password\",\"city\":\"Kolkata\",\"country\":\"India\",\"userType\":{\"userTypeId\":2,\"type\":\"Buyer\",\"description\":\"Want to buy the property\"}}]"));
+    }
+    
+    @Test
+    @WithMockUser(username="abir", password="password")
+    public void testUserTypes() throws Exception {
+        given(this.userTypeRepository.findAll()).willReturn(buildUserTypes());
+        this.mockMvc.perform(get("/user/roles")).andExpect(status().isOk()).andExpect(content().json(
+                "[{\"userTypeId\":2,\"type\":\"Buyer\",\"description\":\"Want to buy the property\"}]"));
+    }
+    
+    private Iterable<UserType> buildUserTypes() {
+        UserType userType = new UserType(2, "Buyer", "Want to buy the property");
+        List<UserType> userTypes = new ArrayList<UserType>();
+        userTypes.add(userType);
+        return userTypes;
     }
 
     private Iterable<User> buildUser() {
