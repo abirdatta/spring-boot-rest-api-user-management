@@ -1,4 +1,4 @@
-FROM mysql 
+FROM mysql:5.6 
 MAINTAINER abirdatta
 ADD ./init-mysql.sql /docker-entrypoint-initdb.d/
 EXPOSE 3306 
