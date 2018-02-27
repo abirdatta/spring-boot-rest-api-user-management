@@ -52,6 +52,18 @@ public class User {
         this.setPassword(password);
         this.setUserType(userType);
     }
+    
+    public User(String firstName, String middleName, String lastName, String emailId, String password,
+            String city, String country, UserType userType) {
+        this.setFirstName(firstName);
+        this.setMiddleName(middleName);
+        this.setLastName(lastName);
+        this.setEmailId(emailId);
+        this.setCity(city);
+        this.setCountry(country);
+        this.setPassword(password);
+        this.setUserType(userType);
+    }
 
     public Integer getUserId() {
         return userId;
