@@ -5,7 +5,7 @@ metadata:
   labels:
     app: user-api
 spec:
-  replicas: 2 
+  replicas: %REPLICA_COUNT% 
   selector:
     matchLabels:
       app: user-api
@@ -15,7 +15,7 @@ spec:
         app: user-api
     spec:
       containers:
-        - image: abirdatta/user-api:dev
+        - image: abirdatta/user-api:%USER_API_IMAGE_TAG%
           name: user-api
           env:
           - name: DATABASE_HOST
