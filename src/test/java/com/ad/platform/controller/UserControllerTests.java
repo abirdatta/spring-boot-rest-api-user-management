@@ -44,7 +44,7 @@ public class UserControllerTests {
     @WithMockUser(username="abir", password="password")
     public void testUserTypes() throws Exception {
         given(this.userTypeRepository.findAll()).willReturn(buildUserTypes());
-        this.mockMvc.perform(get("/user/roles")).andExpect(status().isOk()).andExpect(content().json(
+        this.mockMvc.perform(get("/user/types")).andExpect(status().isOk()).andExpect(content().json(
                 "[{\"userTypeId\":2,\"type\":\"Buyer\",\"description\":\"Want to buy the property\"}]"));
     }
     

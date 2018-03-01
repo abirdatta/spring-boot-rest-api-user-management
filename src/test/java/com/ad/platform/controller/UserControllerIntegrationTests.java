@@ -10,7 +10,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import com.ad.platform.PropertyManagementApplication;
+import com.ad.platform.UserManagementApplication;
 import com.ad.platform.model.User;
 import com.ad.platform.model.UserType;
 import com.google.gson.Gson;
@@ -18,7 +18,7 @@ import com.google.gson.Gson;
 import io.restassured.RestAssured;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT, classes = PropertyManagementApplication.class)
+@SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT, classes = UserManagementApplication.class)
 public class UserControllerIntegrationTests {
 
     @LocalServerPort
@@ -29,7 +29,7 @@ public class UserControllerIntegrationTests {
         given().auth().preemptive().basic("invalid", "invalid").when()
                 .get(String.format("http://localhost:%s/user/list", port)).then().statusCode(401);
         given().auth().preemptive().basic("invalid", "invalid").when()
-                .get(String.format("http://localhost:%s/user/roles", port)).then().statusCode(401);
+                .get(String.format("http://localhost:%s/user/types", port)).then().statusCode(401);
     }
 
     @Test
@@ -42,7 +42,7 @@ public class UserControllerIntegrationTests {
     @Test
     public void testUserRoles() {
         given().auth().preemptive().basic("abir", "password").when()
-                .get(String.format("http://localhost:%s/user/roles", port)).then().statusCode(200)
+                .get(String.format("http://localhost:%s/user/types", port)).then().statusCode(200)
                 .body(containsString("owner"));
     }
 

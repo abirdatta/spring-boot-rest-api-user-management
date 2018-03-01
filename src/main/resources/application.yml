@@ -1,4 +1,3 @@
-name: Abir
 spring: 
   datasource:
     url: jdbc:mysql://${DATABASE_HOST}:${DATABASE_PORT}/${DATABASE_NAME}
@@ -18,3 +17,4 @@ security:
 
 server.port: 9000
 management.port: 9001
+management.security.enabled: false
